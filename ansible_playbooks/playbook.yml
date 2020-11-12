@@ -1,5 +1,5 @@
 - name: "Install and configure Chrisley's weather application"
-  hosts: meteo
+  hosts: unassigned
   roles:
     - weather-chrisley
   become: true
