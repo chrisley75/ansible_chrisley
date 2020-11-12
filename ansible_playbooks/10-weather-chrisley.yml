@@ -2,7 +2,8 @@
   hosts: "{{ morpheus['customOptions']['chrisley_host'] }}"
 #  hosts: "{{ target | default('nothing') }}"
   roles:
-    - "{{ morpheus['customOptions']['chrisley_ansible_roles'] }}"
+#    - "{{ morpheus['customOptions']['chrisley_ansible_roles'] }}"
+    - weather-chrisley
   vars:
     ansible_user: christopher.ley@ibm.com
   become: true
