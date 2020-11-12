@@ -1,0 +1,8 @@
+- name: "Install and configure Chrisley's weather application"
+#  hosts: meteo.chrisley.fr
+  hosts: "{{ target | default('nothing') }}"
+  roles:
+    - weather-chrisley
+  vars:
+    ansible_user: christopher.ley@ibm.com
+  become: true

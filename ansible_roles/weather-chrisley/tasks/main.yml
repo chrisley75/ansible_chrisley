@@ -1,0 +1,109 @@
+---
+# tasks file for weather-chrisley
+
+# Install repository for NodeJS
+- name: Import the repository to install nodejs
+  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
+# Install NodeJS
+- name: install nodejs
+  apt:
+    name: nodejs
+    state: present
+    
+# Create /var/www directory
+- name: Create /var/www directory if it does not exist
+  file:
+    path: /var/www
+    state: directory
+    mode: '0755'
+
+# Git clone chrisley weather app repository
+- name: git clone https://github.com/chrisley75/weather.git
+  git:
+    repo: 'https://github.com/chrisley75/weather.git'
+    dest: /var/www/weather
+    force: yes
+
+# Install NPM package, nodejs packages
+- name: Install "cookie-parser" node.js package
+  npm:
+    name: cookie-parser 
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "debug" node.js package
+  npm:
+    name: debug
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "dotenv" node.js package
+  npm:
+    name: dotenv
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "express" node.js package
+  npm:
+    name: express
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "http-errors" node.js package
+  npm:
+    name: http-errors
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "json-parser" node.js package
+  npm:
+    name: json-parser
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "morgan" node.js package
+  npm:
+    name: morgan
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "node-fetch" node.js package
+  npm:
+    name: node-fetch
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "package.json" node.js package
+  npm:
+    name: package.json
+    path: /var/www/weather
+
+# Install NPM package, nodejs packages
+- name: Install "pug" node.js package
+  npm:
+    name: pug
+    path: /var/www/weather
+
+# Copy systemd service for chrisley_weather app
+- name: Cop chrisley_weather service.
+  copy:
+    src: "services/chrisley_weather.service"
+    dest: "/lib/systemd/system/"
+    owner: root
+    group: root
+    mode: 0644
+
+# Enable service chrisley_weather
+- name: enable service chrisley_weather and ensure it is not masked
+  systemd:
+    name: chrisley_weather
+    enabled: yes
+    masked: no
+
+# Make sure chrisley_weather service is running
+- name: Make sure a service chrisley_weather is running
+  systemd:
+    state: started
+    name: chrisley_weather
+
