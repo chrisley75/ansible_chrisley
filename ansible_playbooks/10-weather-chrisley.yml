@@ -1,8 +1,8 @@
 - name: "Install and configure Chrisley's weather application"
-  hosts: meteo2
+  hosts: all
 #  hosts: "{{ target | default('nothing') }}"
   roles:
-    - "{{ morpheus['customOptions']['option_ansible_playbook'] }}"
+    - "{{ morpheus['customOptions']['chrisley_ansible_roles'] }}"
   vars:
     ansible_user: christopher.ley@ibm.com
   become: true
