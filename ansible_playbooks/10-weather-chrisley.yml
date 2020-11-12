@@ -1,5 +1,5 @@
 - name: "Install and configure Chrisley's weather application"
-  hosts: all
+  hosts: "{{ morpheus['customOptions']['chrisley_host'] }}"
 #  hosts: "{{ target | default('nothing') }}"
   roles:
     - "{{ morpheus['customOptions']['chrisley_ansible_roles'] }}"
