@@ -2,7 +2,7 @@
   hosts: meteo2
 #  hosts: "{{ target | default('nothing') }}"
   roles:
-    - weather-chrisley
+    - "{{ morpheus['customOptions']['option_ansible_playbook'] }}"
   vars:
     ansible_user: christopher.ley@ibm.com
   become: true
