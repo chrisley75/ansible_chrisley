@@ -3,3 +3,5 @@
   roles:
     - weather-chrisley
   become: true
+  pre_tasks:
+    - raw: sudo apt-get install --no-install-recommends --assume-yes python-apt
