@@ -1,7 +1,8 @@
 - name: "Install and configure Chrisley's weather application"
   hosts: unassigned
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python
   roles:
     - weather-chrisley
   become: true
-  pre_tasks:
-    - raw: sudo apt-get install --no-install-recommends --assume-yes python-apt
