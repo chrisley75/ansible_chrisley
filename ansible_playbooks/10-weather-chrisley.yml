@@ -1,6 +1,6 @@
 - name: "Install and configure Chrisley's weather application"
-#  hosts: meteo.chrisley.fr
-  hosts: "{{ target | default('nothing') }}"
+  hosts: meteo2
+#  hosts: "{{ target | default('nothing') }}"
   roles:
     - weather-chrisley
   vars:
